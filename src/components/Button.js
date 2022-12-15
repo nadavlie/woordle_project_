@@ -2,26 +2,23 @@
 // --> of the game itself-->
 // --> special keys will be enter and delete! with uniwue styling!
 // dosnt import nothing only exports!
-import React from "react";
 
 import styled from "styled-components";
-
-export function Button(props) {
-  // styling the button with styled!
-  const Button315 = styled.button`
-      width: 10px;
-      font-size: 5px;
-      text-align: center;
-      line-height: 0.8;
-      color: red;
-      cursor: pointer;
-      border-color: #f2f2f2;
-      border-style: solid;
-      text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
-      border-width: 1px;
-      border-radius: 2.5px;
-      font-family: sans-serif;
-      padding-left:2.3px;
+const Button315 = styled.button`
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #dee1e9;
+    font-size: 7px;
+    font-weight: 700;
+    height: 15px;
+    margin: 2px;
+    text-transform: uppercase;
+    width: 15px;
+    border-radius: 5px;
+    color: #393e4c;
+    padding-left:3.3px;
+    background: #fbfcff;
+    //sup{top:-1.5em;width:0;font-size:11px
       transition: box-shadow 0.3s ease, transform 0.15s ease;
       box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #c0c0c0,
         0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25),
@@ -43,5 +40,12 @@ export function Button(props) {
    }
     }
   `;
-  return <Button315>{props.letter}</Button315>;
+
+export default function Button(props) {
+  // styling the button with styled extension!
+
+  function ClickHandler() {
+    props.down(props.letter);
+  }
+  return <Button315 onClick={ClickHandler}>{props.letter}</Button315>;
 }
