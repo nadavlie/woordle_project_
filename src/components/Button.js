@@ -1,20 +1,16 @@
-// recievs a list of items and uniquely design each according to his function-->
-// --> of the game itself-->
-// --> special keys will be enter and delete! with uniwue styling!
-// dosnt import nothing only exports!
-
 import styled from "styled-components";
-const Button315 = styled.button`
+const ButtonWrapper = styled.div`
+    display:flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid #dee1e9;
-    font-size: 7px;
+    border: 1px solid #dee1e9;
+    font-size: 4px;
     font-weight: 700;
     height: 15px;
     margin: 2px;
     text-transform: uppercase;
-    width: 15px;
-    border-radius: 5px;
+    width: 13px;
+    border-radius: 3px;
     color: #393e4c;
     padding-left:3.3px;
     background: #fbfcff;
@@ -41,11 +37,11 @@ const Button315 = styled.button`
     }
   `;
 
+// recievies each keyboard letter and adding it into a button element with uniquely styled class!
 export default function Button(props) {
-  // styling the button with styled extension!
-
-  function ClickHandler() {
-    props.down(props.letter);
-  }
-  return <Button315 onClick={ClickHandler}>{props.letter}</Button315>;
+  return (
+    <ButtonWrapper>
+      <button>{props.letter}</button>
+    </ButtonWrapper>
+  );
 }

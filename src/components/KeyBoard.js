@@ -2,21 +2,21 @@
 // -->will send each button to unique dynamic style using styled!
 // -->return the keyboard nicely
 import Button from "./Button";
-import yosi from "styled-components";
-const Wraper = yosi.div`
-display:grid;
-grid-template-columns: repeat(10, 1fr);
-gap: 4px;
-height:50%;
-border-color: #f2f2f2;
-border-style: solid;
-border-width: 8px;
-border-radius: 11.5px;
-// padding-left:30px;
-// padding-right:54px;
-// margin-left:30px;
-// margin-right:30px;
-    `;
+
+import styled from "styled-components";
+const Wraper = styled.div`
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  height: 50%;
+  border-color: #f2f2f2;
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 11.5px;
+  width: 40%;
+  margin-left: 260px;
+  margin-top: 40px;
+`;
 
 export default function keyBoard(props) {
   // styling the Keyboard with styled extension!
