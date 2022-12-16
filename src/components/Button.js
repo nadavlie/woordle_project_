@@ -1,4 +1,5 @@
 import styled from "styled-components";
+// import React, { useRef } from "react";
 const ButtonWrapper = styled.div`
     display:flex;
     justify-content: center;
@@ -39,9 +40,12 @@ const ButtonWrapper = styled.div`
 
 // recievies each keyboard letter and adding it into a button element with uniquely styled class!
 export default function Button(props) {
+  function ClickHandler() {
+    props.AddLetter(props.letter);
+  }
   return (
     <ButtonWrapper>
-      <button>{props.letter}</button>
+      <button onClick={ClickHandler}>{props.letter}</button>
     </ButtonWrapper>
   );
 }

@@ -1,15 +1,5 @@
 import styled from "styled-components";
 
-const RowItem = styled.sup`
-  top: -1.5em;
-  width: 0;
-  font-size: 11px;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
-  text-transform: uppercase;
-  font-weight: 700;
-`;
 const RowItemCont = styled.div`
   display: flex;
   align-items: center;
@@ -23,14 +13,12 @@ const RowItemCont = styled.div`
   border-radius: 5px;
   color: #393e4c;
   background: #fbfcff;
+  justifty-items: center;
+  padding-left: 4px;
 
   box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
-export default function CharInRow() {
-  return (
-    <RowItemCont>
-      <RowItem></RowItem>
-    </RowItemCont>
-  );
+export default function CharInRow(props) {
+  return <RowItemCont>{props.letter}</RowItemCont>;
 }

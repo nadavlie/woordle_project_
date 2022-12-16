@@ -10,11 +10,11 @@ const RowWrapper = styled.div`
 export default function Row(props) {
   return (
     <RowWrapper>
-      <CharInRow />
-      <CharInRow />
-      <CharInRow />
-      <CharInRow />
-      <CharInRow />
+      <CharInRow letter={props.currentGuess[0]} />
+      <CharInRow letter={props.currentGuess[1]} />
+      <CharInRow letter={props.currentGuess[2]} />
+      <CharInRow letter={props.currentGuess[3]} />
+      <CharInRow letter={props.currentGuess[4]} />
     </RowWrapper>
   );
 }

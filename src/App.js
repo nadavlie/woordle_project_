@@ -1,6 +1,7 @@
 import KeyBoard from "./components/KeyBoard";
 import Row from "./components/Row";
 import styled from "styled-components";
+import React, { useState } from "react";
 
 // hard coding the keyboard
 const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("");
@@ -9,38 +10,23 @@ const RowsInputWrapper = styled.div`
   margin-top: 50px;
 `;
 
-// const ContainerWrapper = styled.div`
-//   margin: 90px;
-//   width: 55%;
-// `;
-
 export default function App() {
-  // let [currentGuess, setcurrentGuess] = useState("");
-
-  // function UserInputHandler(letter) {
-  //   setcurrentGuess(currentGuess + letter);
-  //   another();
-  // }
-  // function another() {
-  //   if (currentGuess.length > 2) {
-  //     return Savta.createPortal(
-  //       <button>goodJob</button>,
-  //       document.getElementById("beforeroot")
-  //     );
-  //   }
-  // }
+  const [userInputs, SetUserInputs] = useState("");
+  function AddLetter(letter) {
+    SetUserInputs(userInputs + letter);
+  }
 
   return (
     <div>
       <RowsInputWrapper>
-        <Row />
+        <Row currentGuess={userInputs} />
         <Row />
         <Row />
         <Row />
         <Row />
         <Row />
       </RowsInputWrapper>
-      <KeyBoard QWERTY={QWERTY} />
+      <KeyBoard QWERTY={QWERTY} AddLetter={AddLetter} />
     </div>
   );
 }
