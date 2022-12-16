@@ -8,13 +8,17 @@ const RowWrapper = styled.div`
 `;
 
 export default function Row(props) {
+  console.log(`props->${props}`);
+  console.log(`props.a->${props.a}`);
+  console.log(`props.a()->${props.a()}`);
+
   return (
     <RowWrapper>
-      <CharInRow letter={props.currentGuess[0]} />
-      <CharInRow letter={props.currentGuess[1]} />
-      <CharInRow letter={props.currentGuess[2]} />
-      <CharInRow letter={props.currentGuess[3]} />
-      <CharInRow letter={props.currentGuess[4]} />
+      <CharInRow item={props.a2[0] ? props.a2[0] : ""} />
+      <CharInRow item={props.a2[1] ? props.a2[1] : ""} />
+      <CharInRow item={props.a2[2] ? props.a2[2] : ""} />
+      <CharInRow item={props.a2[3] ? props.a2[3] : ""} />
+      <CharInRow item={props.a2[4] ? props.a2[4] : ""} />
     </RowWrapper>
   );
 }

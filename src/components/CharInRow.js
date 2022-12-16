@@ -20,5 +20,5 @@ const RowItemCont = styled.div`
     rgba(0, 0, 0, 0.22) 0px 10px 10px;
 `;
 export default function CharInRow(props) {
-  return <RowItemCont>{props.letter}</RowItemCont>;
+  return <RowItemCont>{props.item}</RowItemCont>;
 }
