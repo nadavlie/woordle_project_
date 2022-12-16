@@ -11,8 +11,9 @@ const RowsInputWrapper = styled.div`
 `;
 
 export default function App() {
+  const FirstRun = localStorage.setItem("FirstRender", "true");
+
   const [userInputs, SetUserInputs] = useState("");
-  const [guesstry, Setguesstry] = useState(1);
 
   function AddLetter(letter) {
     SetUserInputs(userInputs + letter);
@@ -20,20 +21,34 @@ export default function App() {
   function lengthofcurrentguess() {
     return userInputs.length === 5;
   }
-  if (lengthofcurrentguess()) {
-    SetUserInputs("");
-    Setguesstry(guesstry + 1);
-  }
 
   return (
     <div className="lieberman">
       <RowsInputWrapper>
-        <Row a={lengthofcurrentguess} a2={guesstry === 1 ? userInputs : ""} />
-        <Row a={lengthofcurrentguess} a2={guesstry === 2 ? userInputs : ""} />
-        <Row a={lengthofcurrentguess} a2={guesstry === 3 ? userInputs : ""} />
-        <Row a={lengthofcurrentguess} a2={guesstry === 4 ? userInputs : ""} />
-        <Row a={lengthofcurrentguess} a2={guesstry === 5 ? userInputs : ""} />
-        <Row a={lengthofcurrentguess} a2={guesstry === 6 ? userInputs : ""} />
+        <Row
+          a={lengthofcurrentguess}
+          a2={userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""}
+        />
+        <Row
+          a={lengthofcurrentguess}
+          a2={userInputs.slice(5, 10) ? userInputs.slice(5, 10) : ""}
+        />
+        <Row
+          a={lengthofcurrentguess}
+          a2={userInputs.slice(10, 15) ? userInputs.slice(10, 15) : ""}
+        />
+        <Row
+          a={lengthofcurrentguess}
+          a2={userInputs.slice(15, 20) ? userInputs.slice(15, 20) : ""}
+        />
+        <Row
+          a={lengthofcurrentguess}
+          a2={userInputs.slice(20, 25) ? userInputs.slice(20, 25) : ""}
+        />
+        <Row
+          a={lengthofcurrentguess}
+          a2={userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""}
+        />
       </RowsInputWrapper>
       <KeyBoard QWERTY={QWERTY} AddLetter={AddLetter} />
     </div>
