@@ -1,7 +1,7 @@
 import KeyBoard from "./components/KeyBoard";
 import Row from "./components/Row";
 import styled from "styled-components";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 // hard coding the keyboard
 const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("").concat(["del"]);
@@ -20,6 +20,7 @@ const FullDisplay = styled.div`
 
 export default function App() {
   const [userInputs, SetUserInputs] = useState("");
+  console.log(userInputs);
   function AddLetter(letter) {
     SetUserInputs(userInputs + letter);
   }
@@ -28,18 +29,28 @@ export default function App() {
       SetUserInputs(userInputs.slice(0, userInputs.length - 1));
     }
   }
-  if (userInputs.length % 5 === 0 && userInputs.length > 0) {
-    console.log("DONE");
-  }
 
-  document.addEventListener("keyup", function (event) {
-    console.log(event.key.toUpperCase());
+  function keyboardHandler(event) {
     if (event.key === "Backspace") {
       RemoveLetter();
     } else if (QWERTY.includes(event.key.toUpperCase())) {
       AddLetter(event.key.toUpperCase());
+    } else {
+      alert("Please Enter Letters Only");
     }
-  });
+  }
+  useEffect(() => {
+    window.addEventListener("keydown", keyboardHandler);
+    return () => {
+      window.removeEventListener("keydown", keyboardHandler);
+    };
+  }, [userInputs]);
+
+  if (userInputs.length % 5 === 0 && userInputs.length > 0) {
+    console.log("DONE");
+  }
+
+  document.addEventListener("keypress", function (event) {});
 
   return (
     <FullDisplay>
