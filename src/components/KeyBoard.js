@@ -7,6 +7,7 @@ import styled from "styled-components";
 const KeyBoardWrapper = styled.div`
   display: inline-grid;
   grid-template-columns: repeat(10, 1fr);
+  padding-top: 35px;
 `;
 
 export default function keyBoard(props) {

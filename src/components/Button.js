@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import React, { useRef } from "react";
 const ButtonWrapper = styled.button`
   box-sizing: border-box;
-  line-height: 30px;
+  line-height: 40px;
   font-size: 12px;
   text-align: center;
-  width: 30px;
+  width: 40px;
   color: #555;
   cursor: pointer;
   margin: 0 2.9px;
-  height: 30px;
+  height: 40px;
   border-color: #f2f2f2;
   border-style: solid;
   text-shadow: 0 0.5px 1px #777, 0 2px 6px #f2f2f2;
@@ -45,10 +44,10 @@ const ButtonWrapper = styled.button`
 `;
 
 // recievies each keyboard letter and adding it into a button element with uniquely styled class!
+
 export default function Button(props) {
   function ClickHandler() {
     props.AddLetter(props.letter);
-    // console.log(`im from button!--> ${whatwasclicked.current.value}`);
   }
   return (
     <ButtonWrapper

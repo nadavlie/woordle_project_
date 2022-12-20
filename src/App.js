@@ -6,56 +6,61 @@ import React, { useState } from "react";
 // hard coding the keyboard
 const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("").concat(["del"]);
 
-console.log(QWERTY);
-
 const GameInputWrapper = styled.div`
   display: inline-grid;
   gap: 6px;
 `;
-// again-->
+const FullDisplay = styled.div`
+  display: inline-grid;
+  gap: 6px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin 170px 30%;
+`;
 
 export default function App() {
-  // const FirstRun = localStorage.setItem("FirstRender", "true");
-
   const [userInputs, SetUserInputs] = useState("");
-
   function AddLetter(letter) {
     SetUserInputs(userInputs + letter);
   }
-  function lengthofcurrentguess() {
-    return userInputs.length === 5;
+  if (userInputs.length % 5 === 0 && userInputs.length > 0) {
+    console.log("DONE");
   }
-  // d
   return (
-    <div>
+    <FullDisplay>
       <GameInputWrapper>
         <Row
-          a={lengthofcurrentguess}
-          a2={userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""}
+          letterstodisplay={
+            userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""
+          }
         />
         <Row
-          a={lengthofcurrentguess}
-          a2={userInputs.slice(5, 10) ? userInputs.slice(5, 10) : ""}
+          letterstodisplay={
+            userInputs.slice(5, 10) ? userInputs.slice(5, 10) : ""
+          }
         />
         <Row
-          a={lengthofcurrentguess}
-          a2={userInputs.slice(10, 15) ? userInputs.slice(10, 15) : ""}
+          letterstodisplay={
+            userInputs.slice(10, 15) ? userInputs.slice(10, 15) : ""
+          }
         />
         <Row
-          a={lengthofcurrentguess}
-          a2={userInputs.slice(15, 20) ? userInputs.slice(15, 20) : ""}
+          letterstodisplay={
+            userInputs.slice(15, 20) ? userInputs.slice(15, 20) : ""
+          }
         />
         <Row
-          a={lengthofcurrentguess}
-          a2={userInputs.slice(20, 25) ? userInputs.slice(20, 25) : ""}
+          letterstodisplay={
+            userInputs.slice(20, 25) ? userInputs.slice(20, 25) : ""
+          }
         />
         <Row
-          a={lengthofcurrentguess}
-          a2={userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""}
+          letterstodisplay={
+            userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""
+          }
         />
       </GameInputWrapper>
-
       <KeyBoard QWERTY={QWERTY} AddLetter={AddLetter} />
-    </div>
+    </FullDisplay>
   );
 }
