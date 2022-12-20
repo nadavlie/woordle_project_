@@ -24,12 +24,23 @@ export default function App() {
     SetUserInputs(userInputs + letter);
   }
   function RemoveLetter() {
-    if (userInputs.length > 0 && userInputs.length % 5 !== 0)
+    if (userInputs.length > 0 && userInputs.length % 5 !== 0) {
       SetUserInputs(userInputs.slice(0, userInputs.length - 1));
+    }
   }
   if (userInputs.length % 5 === 0 && userInputs.length > 0) {
     console.log("DONE");
   }
+
+  document.addEventListener("keyup", function (event) {
+    console.log(event.key.toUpperCase());
+    if (event.key === "Backspace") {
+      RemoveLetter();
+    } else if (QWERTY.includes(event.key.toUpperCase())) {
+      AddLetter(event.key.toUpperCase());
+    }
+  });
+
   return (
     <FullDisplay>
       <GameInputWrapper>
