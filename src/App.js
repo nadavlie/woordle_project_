@@ -4,14 +4,17 @@ import styled from "styled-components";
 import React, { useState } from "react";
 
 // hard coding the keyboard
-const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("");
-const RowsInputWrapper = styled.div`
-  margin-left: 370px;
-  margin-top: 140px;
+const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("").concat(["del"]);
+
+console.log(QWERTY);
+
+const GameInputWrapper = styled.div`
+  display: inline-grid;
+  gap: 6px;
 `;
 
 export default function App() {
-  const FirstRun = localStorage.setItem("FirstRender", "true");
+  // const FirstRun = localStorage.setItem("FirstRender", "true");
 
   const [userInputs, SetUserInputs] = useState("");
 
@@ -21,10 +24,10 @@ export default function App() {
   function lengthofcurrentguess() {
     return userInputs.length === 5;
   }
-
+  // d
   return (
-    <div className="lieberman">
-      <RowsInputWrapper>
+    <div>
+      <GameInputWrapper>
         <Row
           a={lengthofcurrentguess}
           a2={userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""}
@@ -49,7 +52,8 @@ export default function App() {
           a={lengthofcurrentguess}
           a2={userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""}
         />
-      </RowsInputWrapper>
+      </GameInputWrapper>
+
       <KeyBoard QWERTY={QWERTY} AddLetter={AddLetter} />
     </div>
   );

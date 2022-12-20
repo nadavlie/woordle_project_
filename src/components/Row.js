@@ -2,16 +2,12 @@ import CharInRow from "./CharInRow";
 import styled from "styled-components";
 
 const RowWrapper = styled.div`
-  display: flex;
-  width: 30%;
-  height: 50%;
+  display: inline-flex;
+  gap: 6px;
+  margin-bottom: 5px;
 `;
 
 export default function Row(props) {
-  console.log(`props->${props}`);
-  console.log(`props.a->${props.a}`);
-  console.log(`props.a()->${props.a()}`);
-
   return (
     <RowWrapper>
       <CharInRow item={props.a2[0] ? props.a2[0] : ""} />

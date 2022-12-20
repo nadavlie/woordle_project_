@@ -4,28 +4,19 @@
 import Button from "./Button";
 
 import styled from "styled-components";
-const Wraper = styled.div`
-  display: grid;
+const KeyBoardWrapper = styled.div`
+  display: inline-grid;
   grid-template-columns: repeat(10, 1fr);
-  gap: 2px;
-  height: 50%;
-  border-color: #f2f2f2;
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 11.5px;
-  width: 40%;
-  margin-left: 260px;
-  margin-top: 40px;
 `;
 
 export default function keyBoard(props) {
   // styling the Keyboard with styled extension!
 
   return (
-    <Wraper>
+    <KeyBoardWrapper>
       {props.QWERTY.map((item) => (
         <Button key={item} letter={item} AddLetter={props.AddLetter} />
       ))}
-    </Wraper>
+    </KeyBoardWrapper>
   );
 }
