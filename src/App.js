@@ -23,6 +23,10 @@ export default function App() {
   function AddLetter(letter) {
     SetUserInputs(userInputs + letter);
   }
+  function RemoveLetter() {
+    if (userInputs.length > 0 && userInputs.length % 5 !== 0)
+      SetUserInputs(userInputs.slice(0, userInputs.length - 1));
+  }
   if (userInputs.length % 5 === 0 && userInputs.length > 0) {
     console.log("DONE");
   }
@@ -66,7 +70,11 @@ export default function App() {
           newline={userInputs.length === 25 ? true : false}
         />
       </GameInputWrapper>
-      <KeyBoard QWERTY={QWERTY} AddLetter={AddLetter} />
+      <KeyBoard
+        QWERTY={QWERTY}
+        AddLetter={AddLetter}
+        RemoveLetter={RemoveLetter}
+      />
     </FullDisplay>
   );
 }

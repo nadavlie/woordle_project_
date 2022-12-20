@@ -16,7 +16,12 @@ export default function keyBoard(props) {
   return (
     <KeyBoardWrapper>
       {props.QWERTY.map((item) => (
-        <Button key={item} letter={item} AddLetter={props.AddLetter} />
+        <Button
+          key={item}
+          letter={item}
+          AddLetter={props.AddLetter}
+          RemoveLetter={props.RemoveLetter}
+        />
       ))}
     </KeyBoardWrapper>
   );

@@ -47,7 +47,11 @@ const ButtonWrapper = styled.button`
 
 export default function Button(props) {
   function ClickHandler() {
-    props.AddLetter(props.letter);
+    if (props.letter !== "del") {
+      props.AddLetter(props.letter);
+    } else {
+      props.RemoveLetter();
+    }
   }
   return (
     <ButtonWrapper
