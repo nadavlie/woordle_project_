@@ -12,7 +12,9 @@ export default function Row(props) {
     <RowWrapper>
       <CharInRow
         item={props.letterstodisplay[0] ? props.letterstodisplay[0] : ""}
-        isActive={props.letterstodisplay.length === 1 ? true : false}
+        isActive={
+          props.newline || props.letterstodisplay.length === 1 ? true : false
+        }
       />
       <CharInRow
         item={props.letterstodisplay[1] ? props.letterstodisplay[1] : ""}
