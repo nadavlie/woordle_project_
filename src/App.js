@@ -3,6 +3,7 @@ import Row from "./components/Row";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
+// import { Route, Switch } from "react-router-dom";
 
 // hard coding the keyboard
 const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("").concat(["del"]);
@@ -16,12 +17,12 @@ const FullDisplay = styled.div`
   gap: 6px;
   grid-template-columns: 1fr;
   justify-items: center;
-  margin 170px 30%;
+  margin 170px 39%;
 `;
 
 export default function App() {
   const [userInputs, SetUserInputs] = useState("");
-  console.log(userInputs);
+
   function AddLetter(letter) {
     SetUserInputs(userInputs + letter);
   }
@@ -34,8 +35,10 @@ export default function App() {
   function keyboardHandler(event) {
     if (event.key === "Backspace") {
       RemoveLetter();
-    } else if (QWERTY.includes(event.key.toUpperCase())) {
+    } else if (QWERTY.includes(event.key.toUpperCase()))
       AddLetter(event.key.toUpperCase());
+    else if (event.key === "Escape") {
+      return;
     } else {
       alert("Please Enter Letters Only");
     }
@@ -50,8 +53,6 @@ export default function App() {
   if (userInputs.length % 5 === 0 && userInputs.length > 0) {
     console.log("DONE");
   }
-
-  document.addEventListener("keypress", function (event) {});
 
   return (
     <div>

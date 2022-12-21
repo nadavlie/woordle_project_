@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 const HeaderWrapper = styled.header`
   width: 100%;
@@ -49,6 +49,7 @@ const HelpWindow = styled.div`
   width: 40%;
   background-color: white;
   padding: 6rem;
+  margin-top: 20px;
   border-radius: 5px;
   box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
   z-index: 10;
@@ -59,15 +60,24 @@ const HelpWindow = styled.div`
     font-size: 1.8rem;
     color: #333;
     cursor: pointer;
-    border: none;
-    background: none;
+    border: 1px solid black;
+    border-radius: 4.5px;
+    background: -webkit-linear-gradient(
+      top,
+      #f9f9f9 0%,
+      #d2d2d2 80%,
+      #c0c0c0 100%
+    );
   }
   h1 {
     font-size: 2.5rem;
     margin-bottom: 2rem;
   }
   p {
-    font-size: 1rem;
+    font-size: 1.4rem;
+  }
+  li {
+    font-size: 1.3rem;
   }
 `;
 
@@ -81,10 +91,23 @@ export default function Header() {
     SetClickedForHelp(false);
   }
 
+  function keyboardHandlerModal(event) {
+    if (event.key === "Escape") CloseHelp();
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", keyboardHandlerModal);
+    return () => {
+      window.removeEventListener("keydown", keyboardHandlerModal);
+    };
+  }, [ClickedForHelp]);
+
   return (
     <div>
       <HeaderWrapper>
-        <h1>Welcome To My Woordle Game!</h1>
+        <h1>
+          <strong>Welcome To My Woordle Game!</strong>
+        </h1>
         <button onClick={OpenHelp}>Help</button>
       </HeaderWrapper>
       {ClickedForHelp && <ModalPopUp CloseHelp={CloseHelp} />}
@@ -100,17 +123,17 @@ export function ModalPopUp(props) {
       <p>
         Wordle, the online word game is very easy to play and has very simple
         rules that one can go through.
-        <ul>
-          <li>The player has to guess the Wordle in six attempts or less</li>
-          <li>Every word, which is entered should be in the word list</li>
-          <li>If the letter is correct, the color would turn green</li>
-          <li>
-            If the letter is correct but placed wrong then it would turn yellow
-          </li>
-          <li>An incorrect letter turns gray</li>
-          <li>Letters can be used more than one time</li>
-        </ul>
       </p>
+      <ul>
+        <li>The player has to guess the Wordle in six attempts or less</li>
+        <li>Every word, which is entered should be in the word list</li>
+        <li>If the letter is correct, the color would turn green</li>
+        <li>
+          If the letter is correct but placed wrong then it would turn yellow
+        </li>
+        <li>An incorrect letter turns gray</li>
+        <li>Letters can be used more than one time</li>
+      </ul>
     </HelpWindow>
   );
 }
