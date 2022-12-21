@@ -2,6 +2,7 @@ import KeyBoard from "./components/KeyBoard";
 import Row from "./components/Row";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
 
 // hard coding the keyboard
 const QWERTY = `QWERTYUIOPASDFGHJKLZXCVBNM`.split("").concat(["del"]);
@@ -53,50 +54,53 @@ export default function App() {
   document.addEventListener("keypress", function (event) {});
 
   return (
-    <FullDisplay>
-      <GameInputWrapper>
-        <Row
-          letterstodisplay={
-            userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""
-          }
-          newline={userInputs.length === 0 ? true : false}
+    <div>
+      <Header />
+      <FullDisplay>
+        <GameInputWrapper>
+          <Row
+            letterstodisplay={
+              userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""
+            }
+            newline={userInputs.length === 0 ? true : false}
+          />
+          <Row
+            letterstodisplay={
+              userInputs.slice(5, 10) ? userInputs.slice(5, 10) : ""
+            }
+            newline={userInputs.length === 5 ? true : false}
+          />
+          <Row
+            letterstodisplay={
+              userInputs.slice(10, 15) ? userInputs.slice(10, 15) : ""
+            }
+            newline={userInputs.length === 10 ? true : false}
+          />
+          <Row
+            letterstodisplay={
+              userInputs.slice(15, 20) ? userInputs.slice(15, 20) : ""
+            }
+            newline={userInputs.length === 15 ? true : false}
+          />
+          <Row
+            letterstodisplay={
+              userInputs.slice(20, 25) ? userInputs.slice(20, 25) : ""
+            }
+            newline={userInputs.length === 20 ? true : false}
+          />
+          <Row
+            letterstodisplay={
+              userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""
+            }
+            newline={userInputs.length === 25 ? true : false}
+          />
+        </GameInputWrapper>
+        <KeyBoard
+          QWERTY={QWERTY}
+          AddLetter={AddLetter}
+          RemoveLetter={RemoveLetter}
         />
-        <Row
-          letterstodisplay={
-            userInputs.slice(5, 10) ? userInputs.slice(5, 10) : ""
-          }
-          newline={userInputs.length === 5 ? true : false}
-        />
-        <Row
-          letterstodisplay={
-            userInputs.slice(10, 15) ? userInputs.slice(10, 15) : ""
-          }
-          newline={userInputs.length === 10 ? true : false}
-        />
-        <Row
-          letterstodisplay={
-            userInputs.slice(15, 20) ? userInputs.slice(15, 20) : ""
-          }
-          newline={userInputs.length === 15 ? true : false}
-        />
-        <Row
-          letterstodisplay={
-            userInputs.slice(20, 25) ? userInputs.slice(20, 25) : ""
-          }
-          newline={userInputs.length === 20 ? true : false}
-        />
-        <Row
-          letterstodisplay={
-            userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""
-          }
-          newline={userInputs.length === 25 ? true : false}
-        />
-      </GameInputWrapper>
-      <KeyBoard
-        QWERTY={QWERTY}
-        AddLetter={AddLetter}
-        RemoveLetter={RemoveLetter}
-      />
-    </FullDisplay>
+      </FullDisplay>
+    </div>
   );
 }
