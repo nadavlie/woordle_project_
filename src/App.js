@@ -31,7 +31,7 @@ export default function App() {
       SetUserInputs(userInputs.slice(0, userInputs.length - 1));
     }
   }
-
+  //  keyboard handeling events and sending to state sets according to value
   function keyboardHandler(event) {
     if (event.key === "Backspace") {
       RemoveLetter();
