@@ -3,6 +3,7 @@ import Row from "./components/Row";
 import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
+import WordHandler from "./WordHandler";
 // import { Route, Switch } from "react-router-dom";
 
 // hard coding the keyboard
@@ -52,6 +53,11 @@ export default function App() {
 
   if (userInputs.length % 5 === 0 && userInputs.length > 0) {
     console.log("DONE");
+    if (!WordHandler(userInputs.slice(-5).toLowerCase())) {
+      SetUserInputs(userInputs.slice(0, -5));
+      alert("not a valid word!");
+    } else {
+    }
   }
 
   return (
