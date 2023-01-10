@@ -4,6 +4,7 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import WordHandler from "./WordHandler";
+import wordPainting from "./wordPainting";
 // import { Route, Switch } from "react-router-dom";
 
 // hard coding the keyboard
@@ -23,7 +24,10 @@ const FullDisplay = styled.div`
 
 export default function App() {
   const [userInputs, SetUserInputs] = useState("");
+  const [currentWord, setCurrentWord] = useState("");
+  const [line, setLine] = useState(0);
 
+  // change to preveous state instaed + letter
   function AddLetter(letter) {
     SetUserInputs(userInputs + letter);
   }
@@ -57,6 +61,7 @@ export default function App() {
       SetUserInputs(userInputs.slice(0, -5));
       alert("not a valid word!");
     } else {
+      setCurrentWord(userInputs.slice(-5).toLowerCase());
     }
   }
 
