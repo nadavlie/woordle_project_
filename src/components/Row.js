@@ -8,7 +8,7 @@ const RowWrapper = styled.div`
 `;
 
 export default function Row(props) {
-  if (!props.completeRowStyle) {
+  if (props.color.length < 5) {
     return (
       <RowWrapper>
         <CharInRow
@@ -37,26 +37,11 @@ export default function Row(props) {
   } else {
     return (
       <RowWrapper>
-        <CharInRow
-          item={props.letterstodisplay[0]}
-          color={props.completeRowStyle[0]}
-        />
-        <CharInRow
-          item={props.letterstodisplay[1]}
-          color={props.completeRowStyle[1]}
-        />
-        <CharInRow
-          item={props.letterstodisplay[2]}
-          color={props.completeRowStyle[2]}
-        />
-        <CharInRow
-          item={props.letterstodisplay[3]}
-          color={props.completeRowStyle[3]}
-        />
-        <CharInRow
-          item={props.letterstodisplay[4]}
-          color={props.completeRowStyle[4]}
-        />
+        <CharInRow item={props.letterstodisplay[0]} color={props.color[0]} />
+        <CharInRow item={props.letterstodisplay[1]} color={props.color[1]} />
+        <CharInRow item={props.letterstodisplay[2]} color={props.color[2]} />
+        <CharInRow item={props.letterstodisplay[3]} color={props.color[3]} />
+        <CharInRow item={props.letterstodisplay[4]} color={props.color[4]} />
       </RowWrapper>
     );
   }

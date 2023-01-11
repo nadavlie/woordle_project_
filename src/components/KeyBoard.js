@@ -12,11 +12,13 @@ const KeyBoardWrapper = styled.div`
 
 export default function keyBoard(props) {
   // styling the Keyboard with styled extension!
+  // developer.hasOwnProperty("isEmployed");
 
   return (
     <KeyBoardWrapper>
-      {props.QWERTY.map((item) => (
+      {props.QWERTY.map(item => (
         <Button
+          color={props.color[item] ? props.color[item] : ""}
           key={item}
           letter={item}
           AddLetter={props.AddLetter}

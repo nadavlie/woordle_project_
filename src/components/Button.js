@@ -22,6 +22,7 @@ const ButtonWrapper = styled.button`
   );
   font-family: sans-serif;
   display: inline-block;
+
   transition: box-shadow 0.3s ease, transform 0.15s ease;
   box-shadow: 0 0 1px #888, 0 1px 0 #fff, 0 6px 0 #c0c0c0,
     0 8px 17px rgba(#444, 0.4), 2px 1px 4px rgba(#444, 0.25),
@@ -57,7 +58,8 @@ export default function Button(props) {
     <ButtonWrapper
       key={props.letter}
       value={props.letter}
-      onClick={ClickHandler}>
+      onClick={ClickHandler}
+      color={props.color ? props.color : ""}>
       {props.letter}
     </ButtonWrapper>
   );
