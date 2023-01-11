@@ -57,8 +57,7 @@ export default function Button(props) {
     <ButtonWrapper
       key={props.letter}
       value={props.letter}
-      onClick={ClickHandler}
-    >
+      onClick={ClickHandler}>
       {props.letter}
     </ButtonWrapper>
   );

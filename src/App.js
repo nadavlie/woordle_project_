@@ -24,7 +24,7 @@ const FullDisplay = styled.div`
 
 export default function App() {
   const [userInputs, SetUserInputs] = useState("");
-  const [currentWord, setCurrentWord] = useState("");
+
   const [line, setLine] = useState(0);
 
   // change to preveous state instaed + letter
@@ -56,12 +56,11 @@ export default function App() {
   }, [userInputs]);
 
   if (userInputs.length % 5 === 0 && userInputs.length > 0) {
-    console.log("DONE");
+    console.log(wordPainting(userInputs.slice(-5).toLowerCase()));
     if (!WordHandler(userInputs.slice(-5).toLowerCase())) {
       SetUserInputs(userInputs.slice(0, -5));
+      console.log("bad");
       alert("not a valid word!");
-    } else {
-      setCurrentWord(userInputs.slice(-5).toLowerCase());
     }
   }
 
@@ -75,36 +74,66 @@ export default function App() {
               userInputs.slice(0, 5) ? userInputs.slice(0, 5) : ""
             }
             newline={userInputs.length === 0 ? true : false}
+            completeRowStyle={
+              userInputs.length === 5
+                ? wordPainting(userInputs.slice(-5).toLowerCase())
+                : false
+            }
           />
           <Row
             letterstodisplay={
               userInputs.slice(5, 10) ? userInputs.slice(5, 10) : ""
             }
             newline={userInputs.length === 5 ? true : false}
+            completeRowStyle={
+              userInputs.length === 10
+                ? wordPainting(userInputs.slice(-5).toLowerCase())
+                : false
+            }
           />
           <Row
             letterstodisplay={
               userInputs.slice(10, 15) ? userInputs.slice(10, 15) : ""
             }
             newline={userInputs.length === 10 ? true : false}
+            completeRowStyle={
+              userInputs.length === 15
+                ? wordPainting(userInputs.slice(-5).toLowerCase())
+                : false
+            }
           />
           <Row
             letterstodisplay={
               userInputs.slice(15, 20) ? userInputs.slice(15, 20) : ""
             }
             newline={userInputs.length === 15 ? true : false}
+            completeRowStyle={
+              userInputs.length === 20
+                ? wordPainting(userInputs.slice(-5).toLowerCase())
+                : false
+            }
           />
           <Row
             letterstodisplay={
               userInputs.slice(20, 25) ? userInputs.slice(20, 25) : ""
             }
             newline={userInputs.length === 20 ? true : false}
+            completeRowStyle={
+              userInputs.length === 25
+                ? wordPainting(userInputs.slice(-5).toLowerCase())
+                : false
+            }
           />
           <Row
             letterstodisplay={
               userInputs.slice(25, 30) ? userInputs.slice(25, 30) : ""
             }
             newline={userInputs.length === 25 ? true : false}
+            completeRowStyle={
+              userInputs.length === 30
+                ? wordPainting(userInputs.slice(-5).toLowerCase())
+                : false
+            }
           />
         </GameInputWrapper>
         <KeyBoard

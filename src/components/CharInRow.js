@@ -7,16 +7,22 @@ const RowItemContainer = styled.div`
   text-transform: uppercase;
   border-radius: 5px;
   width: 30px;
+  background-color: ${props => (props.color === "green" ? "green" : "")};
+  background-color: ${props => (props.color === "yellow" ? "yellow" : "")};
+  background-color: ${props => (props.color === "gray" ? "gray" : "")};
+
   text-align: center;
   height: 30px;
   border: 1.2px solid gray;
   line-height: 30px;
-  ${(props) =>
+  ${props =>
     props.isActive ? "box-shadow: 0 0 0 5px rgba(21, 156, 228, 0.4)" : ""}
 `;
 
 export default function CharInRow(props) {
   return (
-    <RowItemContainer isActive={props.isActive}>{props.item}</RowItemContainer>
+    <RowItemContainer color={props.color} isActive={props.isActive}>
+      {props.item}
+    </RowItemContainer>
   );
 }
