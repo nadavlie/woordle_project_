@@ -1,3 +1,4 @@
+import App from "./App";
 export default function wordPainting(word) {
   let a = "lover";
 
@@ -14,9 +15,10 @@ export default function wordPainting(word) {
       results.push("gray");
     }
   }
-  if (results.filter(each => each === "green").length === 5) {
-    return "win";
-  }
+
+  // if (results.filter(each => each === "green").length === 5) {
+  //   return ["win"];
+  // }
 
   return results;
 }

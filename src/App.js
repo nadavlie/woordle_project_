@@ -22,7 +22,7 @@ const FullDisplay = styled.div`
   justify-items: center;
   margin 170px 39%;
 `;
-// start==========------>
+
 export default function App() {
   const [gameState, dispach] = useReducer(gameLogic, {
     allwords: "",
@@ -36,7 +36,7 @@ export default function App() {
     try: 0,
     win: false,
   });
-  console.log("guess no.--->", gameState.try);
+  console.log("--->", gameState.leterwordstyle);
   // change to preveous state instaed + letter
   function AddLetter(letter) {
     dispach({ type: "char", value: letter });
