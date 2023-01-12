@@ -38,7 +38,7 @@ export default function App() {
     g5: [],
     g6: [],
   });
-  console.log(gameState.allwords);
+  console.log(gameState);
   // change to preveous state instaed + letter
   function AddLetter(letter) {
     dispach({ type: "char", value: letter });
@@ -103,33 +103,33 @@ export default function App() {
         <GameInputWrapper>
           <Row
             letterstodisplay={gameState.allwords.slice(0, 5)}
-            // color={rowStyle.slice(0, 5)}
+            color={gameState.g1.length > 0 ? gameState.g1 : ""}
             newline={gameState.allwords.length === 0 ? true : false}
           />
           <Row
             letterstodisplay={gameState.allwords.slice(5, 10)}
             newline={gameState.allwords.length === 5 ? true : false}
-            // color={rowStyle.slice(5, 10)}
+            color={gameState.g2.length > 0 ? gameState.g2 : ""}
           />
           <Row
             letterstodisplay={gameState.allwords.slice(10, 15)}
             newline={gameState.allwords.length === 10 ? true : false}
-            // color={rowStyle.slice(10, 15)}
+            color={gameState.g3.length > 0 ? gameState.g3 : ""}
           />
           <Row
             letterstodisplay={gameState.allwords.slice(15, 20)}
             newline={gameState.allwords.length === 15 ? true : false}
-            // color={rowStyle.slice(15, 20)}
+            color={gameState.g4.length > 0 ? gameState.g4 : ""}
           />
           <Row
             letterstodisplay={gameState.allwords.slice(20, 25)}
             newline={gameState.allwords.length === 20 ? true : false}
-            // color={rowStyle.slice(20, 25)}
+            color={gameState.g5.length > 0 ? gameState.g5 : ""}
           />
           <Row
             letterstodisplay={gameState.allwords.slice(25, 30)}
             newline={gameState.allwords.length === 25 ? true : false}
-            // color={rowStyle.slice(25, 30)}
+            color={gameState.g6.length > 0 ? gameState.g6 : ""}
           />
         </GameInputWrapper>
         <KeyBoard
