@@ -1,10 +1,12 @@
 import KeyBoard from "./components/KeyBoard";
 import Row from "./components/Row";
 import styled from "styled-components";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useReducer } from "react";
 import Header from "./components/Header";
 import WordHandler from "./WordHandler";
 import wordPainting from "./wordPainting";
+import gameLogic from "./gameLogic";
+
 // import { Route, Switch } from "react-router-dom";
 
 // hard coding the keyboard
@@ -23,18 +25,27 @@ const FullDisplay = styled.div`
 `;
 
 export default function App() {
-  const [userInputs, SetUserInputs] = useState("");
-  const [rowStyle, setRowStyle] = useState([]);
-  const [keyboardstyle, setKeyboardStyle] = useState({});
-  console.log("this i startser", keyboardstyle);
-
+  // const [userInputs, SetUserInputs] = useState("");
+  // const [rowStyle, setRowStyle] = useState([]);
+  // const [keyboardstyle, setKeyboardStyle] = useState({});
+  // const [isfiveletters, setIsfiveletters] = useState(false);
+  const [gameState, dispach] = useReducer(gameLogic, {
+    allwords: "",
+    g1: [],
+    g2: [],
+    g3: [],
+    g4: [],
+    g5: [],
+    g6: [],
+  });
+  console.log(gameState.allwords);
   // change to preveous state instaed + letter
   function AddLetter(letter) {
-    SetUserInputs(prev => prev + letter);
+    dispach({ type: "char", value: letter });
   }
   function RemoveLetter() {
-    if (userInputs.length > 0 && userInputs.length % 5 !== 0) {
-      SetUserInputs(userInputs.slice(0, userInputs.length - 1));
+    if (gameState.allwords.length > 0 && gameState.allwords.length % 5 !== 0) {
+      dispach({ type: "del" });
     }
   }
   //  keyboard handeling events and sending to state sets according to value
@@ -54,29 +65,36 @@ export default function App() {
     return () => {
       window.removeEventListener("keydown", keyboardHandler);
     };
-  }, [userInputs]);
+  }, [gameState.allwords]);
 
-  useEffect(() => {
-    if (userInputs.length % 5 == 0 && userInputs.length > 0) {
-      if (!WordHandler(userInputs.slice(-5).toLowerCase())) {
-        SetUserInputs(userInputs.slice(0, -5));
-        setRowStyle(prev => [...prev.slice(-5)]);
+  // if (gameState.allwords.length % 5 === 0 && gameState.allwords.length > 0) {
+  // }
 
-        console.log("bad");
-        alert("not a valid word!");
-      } else {
-        let wordstyle = wordPainting(userInputs.slice(-5).toLowerCase());
-        const currentGuesse = userInputs.slice(-5).split("");
-        let currentobj = {};
-        for (let i = 0; i < 5; i++) {
-          currentobj[currentGuesse[i]] = wordstyle[i];
-        }
+  // useEffect(() => {
+  //   if (!WordHandler(gameState.allwords.slice(-5).toLowerCase())) {
+  //     SetUserInputs(userInputs.slice(0, -5));
+  //   }
+  // }, [isfiveletters]);
 
-        setRowStyle(prev => [...prev, ...wordstyle]);
-        setKeyboardStyle({ ...keyboardstyle, ...currentobj });
-      }
-    }
-  }, [userInputs]);
+  // if (isvalid) {
+  //   let wordstyle = wordPainting(userInputs.slice(-5).toLowerCase());
+  //   const currentGuesse = userInputs.slice(-5).split("");
+  //   let currentobj = {};
+  //   for (let i = 0; i < 5; i++) {
+  //     currentobj[currentGuesse[i]] = wordstyle[i];
+  //   }
+
+  //   setRowStyle(prev => [...prev, ...wordstyle]);
+  // }
+
+  // if (userInputs.length % 5 === 0 && userInputs.length > 0) {
+  //   if (!WordHandler(userInputs.slice(-5).toLowerCase())) {
+  //     alert("not a valid word!");
+  //     SetUserInputs(userInputs.slice(0, -5));
+  //     setIsvalid(false);
+  //   }
+  //   setIsvalid(true);
+  // }
 
   return (
     <div>
@@ -84,38 +102,38 @@ export default function App() {
       <FullDisplay>
         <GameInputWrapper>
           <Row
-            letterstodisplay={userInputs.slice(0, 5)}
-            color={rowStyle.slice(0, 5)}
-            newline={userInputs.length === 0 ? true : false}
+            letterstodisplay={gameState.allwords.slice(0, 5)}
+            // color={rowStyle.slice(0, 5)}
+            newline={gameState.allwords.length === 0 ? true : false}
           />
           <Row
-            letterstodisplay={userInputs.slice(5, 10)}
-            newline={userInputs.length === 5 ? true : false}
-            color={rowStyle.slice(5, 10)}
+            letterstodisplay={gameState.allwords.slice(5, 10)}
+            newline={gameState.allwords.length === 5 ? true : false}
+            // color={rowStyle.slice(5, 10)}
           />
           <Row
-            letterstodisplay={userInputs.slice(10, 15)}
-            newline={userInputs.length === 10 ? true : false}
-            color={rowStyle.slice(10, 15)}
+            letterstodisplay={gameState.allwords.slice(10, 15)}
+            newline={gameState.allwords.length === 10 ? true : false}
+            // color={rowStyle.slice(10, 15)}
           />
           <Row
-            letterstodisplay={userInputs.slice(15, 20)}
-            newline={userInputs.length === 15 ? true : false}
-            color={rowStyle.slice(15, 20)}
+            letterstodisplay={gameState.allwords.slice(15, 20)}
+            newline={gameState.allwords.length === 15 ? true : false}
+            // color={rowStyle.slice(15, 20)}
           />
           <Row
-            letterstodisplay={userInputs.slice(20, 25)}
-            newline={userInputs.length === 20 ? true : false}
-            color={rowStyle.slice(20, 25)}
+            letterstodisplay={gameState.allwords.slice(20, 25)}
+            newline={gameState.allwords.length === 20 ? true : false}
+            // color={rowStyle.slice(20, 25)}
           />
           <Row
-            letterstodisplay={userInputs.slice(25, 30)}
-            newline={userInputs.length === 25 ? true : false}
-            color={rowStyle.slice(25, 30)}
+            letterstodisplay={gameState.allwords.slice(25, 30)}
+            newline={gameState.allwords.length === 25 ? true : false}
+            // color={rowStyle.slice(25, 30)}
           />
         </GameInputWrapper>
         <KeyBoard
-          color={keyboardstyle}
+          // color={keyboardstyle}
           QWERTY={QWERTY}
           AddLetter={AddLetter}
           RemoveLetter={RemoveLetter}

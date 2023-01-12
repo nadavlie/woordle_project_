@@ -18,7 +18,7 @@ export default function keyBoard(props) {
     <KeyBoardWrapper>
       {props.QWERTY.map(item => (
         <Button
-          color={props.color[item] ? props.color[item] : ""}
+          // color={props.color[item] ? props.color[item] : ""}
           key={item}
           letter={item}
           AddLetter={props.AddLetter}
