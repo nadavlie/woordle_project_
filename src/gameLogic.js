@@ -2,14 +2,19 @@ import WordHandler from "./WordHandler";
 import wordPainting from "./wordPainting";
 export default function gameLogic(state, action) {
   // updates the object with => letter:color
+  //handeling that keyboard will update only afyer executing!
   if (action.type === "wordwasentered") {
-    return {
-      ...state,
-      leterwordstyle: toObject(
-        state.allwords.split(""),
-        state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
-      ),
-    };
+    if (state.allwords.length % 5 === 0 && state.allwords.length > 0) {
+      return {
+        ...state,
+        leterwordstyle: toObject(
+          state.allwords.split(""),
+          state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
+        ),
+      };
+    } else {
+      return { ...state };
+    }
   }
   if (action.type === "char") {
     //if chat and not yet a word
@@ -32,6 +37,7 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 5) {
           return {
             ...state,
+            try: state.try + 1,
             allwords: state.allwords + action.value,
             g1: [
               ...wordPainting(
@@ -43,6 +49,7 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 10) {
           return {
             ...state,
+            try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
               state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
@@ -58,6 +65,7 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 15) {
           return {
             ...state,
+            try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
               state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
@@ -73,6 +81,7 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 20) {
           return {
             ...state,
+            try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
               state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
@@ -88,6 +97,7 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 25) {
           return {
             ...state,
+            try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
               state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
@@ -103,6 +113,7 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 30) {
           return {
             ...state,
+            try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
               state.g1.concat(state.g2, state.g3, state.g4, state.g5, state.g6)
@@ -130,7 +141,7 @@ export default function gameLogic(state, action) {
     return { ...state, allwords: state.allwords.slice(0, -1) };
   }
 }
-
+// function that updates the lettr:color object and handles duplicates for example word that contains more a letter twice or more
 function toObject(keys, values) {
   const obj = {};
 

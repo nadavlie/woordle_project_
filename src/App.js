@@ -1,10 +1,9 @@
 import KeyBoard from "./components/KeyBoard";
 import Row from "./components/Row";
 import styled from "styled-components";
-import React, { useState, useEffect, useReducer } from "react";
+import React, { useEffect, useReducer } from "react";
 import Header from "./components/Header";
-import WordHandler from "./WordHandler";
-import wordPainting from "./wordPainting";
+
 import gameLogic from "./gameLogic";
 
 // import { Route, Switch } from "react-router-dom";
@@ -23,7 +22,7 @@ const FullDisplay = styled.div`
   justify-items: center;
   margin 170px 39%;
 `;
-
+// start==========------>
 export default function App() {
   const [gameState, dispach] = useReducer(gameLogic, {
     allwords: "",
@@ -34,8 +33,10 @@ export default function App() {
     g5: [],
     g6: [],
     leterwordstyle: {},
+    try: 0,
+    win: false,
   });
-  console.log(gameState.leterwordstyle);
+  console.log("guess no.--->", gameState.try);
   // change to preveous state instaed + letter
   function AddLetter(letter) {
     dispach({ type: "char", value: letter });
@@ -65,9 +66,7 @@ export default function App() {
   }, [gameState.allwords]);
 
   useEffect(() => {
-    if (gameState.allwords.length % 5 === 0) {
-      dispach({ type: "wordwasentered" });
-    }
+    dispach({ type: "wordwasentered" });
   }, [gameState.allwords]);
 
   return (
