@@ -42,14 +42,16 @@ export default function gameLogic(state, action) {
                 (state.allwords + action.value)
                   .slice(-5)
 
-                  .toLowerCase()
+                  .toLowerCase(),
+                state.wordpicked
               )
             ),
             try: state.try + 1,
             allwords: state.allwords + action.value,
             g1: [
               ...wordPainting(
-                (state.allwords + action.value).slice(-5).toLowerCase()
+                (state.allwords + action.value).slice(-5).toLowerCase(),
+                state.wordpicked
               ),
             ],
           };
@@ -62,7 +64,8 @@ export default function gameLogic(state, action) {
                 (state.allwords + action.value)
                   .slice(-5)
 
-                  .toLowerCase()
+                  .toLowerCase(),
+                state.wordpicked
               )
             ),
             try: state.try + 1,
@@ -73,7 +76,8 @@ export default function gameLogic(state, action) {
             allwords: state.allwords + action.value,
             g2: [
               ...wordPainting(
-                (state.allwords + action.value).slice(-5).toLowerCase()
+                (state.allwords + action.value).slice(-5).toLowerCase(),
+                state.wordpicked
               ),
             ],
           };
@@ -86,7 +90,8 @@ export default function gameLogic(state, action) {
                 (state.allwords + action.value)
                   .slice(-5)
 
-                  .toLowerCase()
+                  .toLowerCase(),
+                state.wordpicked
               )
             ),
             try: state.try + 1,
@@ -97,7 +102,8 @@ export default function gameLogic(state, action) {
             allwords: state.allwords + action.value,
             g3: [
               ...wordPainting(
-                (state.allwords + action.value).slice(-5).toLowerCase()
+                (state.allwords + action.value).slice(-5).toLowerCase(),
+                state.wordpicked
               ),
             ],
           };
@@ -110,7 +116,8 @@ export default function gameLogic(state, action) {
                 (state.allwords + action.value)
                   .slice(-5)
 
-                  .toLowerCase()
+                  .toLowerCase(),
+                state.wordpicked
               )
             ),
             try: state.try + 1,
@@ -121,7 +128,8 @@ export default function gameLogic(state, action) {
             allwords: state.allwords + action.value,
             g4: [
               ...wordPainting(
-                (state.allwords + action.value).slice(-5).toLowerCase()
+                (state.allwords + action.value).slice(-5).toLowerCase(),
+                state.wordpicked
               ),
             ],
           };
@@ -134,7 +142,8 @@ export default function gameLogic(state, action) {
                 (state.allwords + action.value)
                   .slice(-5)
 
-                  .toLowerCase()
+                  .toLowerCase(),
+                state.wordpicked
               )
             ),
             try: state.try + 1,
@@ -145,7 +154,8 @@ export default function gameLogic(state, action) {
             allwords: state.allwords + action.value,
             g5: [
               ...wordPainting(
-                (state.allwords + action.value).slice(-5).toLowerCase()
+                (state.allwords + action.value).slice(-5).toLowerCase(),
+                state.wordpicked
               ),
             ],
           };
@@ -158,7 +168,8 @@ export default function gameLogic(state, action) {
                 (state.allwords + action.value)
                   .slice(-5)
 
-                  .toLowerCase()
+                  .toLowerCase(),
+                state.wordpicked
               )
             ),
             try: state.try + 1,
@@ -169,7 +180,8 @@ export default function gameLogic(state, action) {
             allwords: state.allwords + action.value,
             g6: [
               ...wordPainting(
-                (state.allwords + action.value).slice(-5).toLowerCase()
+                (state.allwords + action.value).slice(-5).toLowerCase(),
+                state.wordpicked
               ),
             ],
           };
@@ -195,9 +207,10 @@ function toObject(keys, values) {
 
   keys.forEach((element, index) => {
     if (obj[element]) {
-      if (values[index] === "gray") {
-        return;
+      if (obj[element] === "yellow" && values[index] === "green") {
+        return (obj[element] = values[index]);
       }
+      if (obj[element] === "gray" || obj[element] === "green") return;
     }
     obj[element] = values[index];
   });

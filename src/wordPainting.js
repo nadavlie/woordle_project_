@@ -1,6 +1,6 @@
 import App from "./App";
-export default function wordPainting(word) {
-  let a = "lover";
+export default function wordPainting(word, wordpicked) {
+  let a = wordpicked;
 
   let b = a.split("");
   let results = [];

@@ -1,8 +1,9 @@
 import KeyBoard from "./components/KeyBoard";
 import Row from "./components/Row";
 import styled from "styled-components";
-import React, { useEffect, useReducer } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import Header from "./components/Header";
+import { WORDS } from "./data";
 
 import gameLogic from "./gameLogic";
 
@@ -35,7 +36,9 @@ export default function App() {
     leterwordstyle: {},
     try: 0,
     win: false,
+    wordpicked: WORDS[Math.floor(Math.random() * WORDS.length)],
   });
+  console.log(gameState.wordpicked);
 
   // change to preveous state instaed + letter
   function AddLetter(letter) {
@@ -77,6 +80,10 @@ export default function App() {
       }, 400);
     }
   }, [gameState.win]);
+
+  if (gameState.try > 6) {
+    alert("you lose, try again next time");
+  }
 
   return (
     <div>
