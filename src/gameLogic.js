@@ -37,6 +37,14 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 5) {
           return {
             ...state,
+            win: wingame(
+              wordPainting(
+                (state.allwords + action.value)
+                  .slice(-5)
+
+                  .toLowerCase()
+              )
+            ),
             try: state.try + 1,
             allwords: state.allwords + action.value,
             g1: [
@@ -49,6 +57,14 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 10) {
           return {
             ...state,
+            win: wingame(
+              wordPainting(
+                (state.allwords + action.value)
+                  .slice(-5)
+
+                  .toLowerCase()
+              )
+            ),
             try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
@@ -65,6 +81,14 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 15) {
           return {
             ...state,
+            win: wingame(
+              wordPainting(
+                (state.allwords + action.value)
+                  .slice(-5)
+
+                  .toLowerCase()
+              )
+            ),
             try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
@@ -81,6 +105,14 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 20) {
           return {
             ...state,
+            win: wingame(
+              wordPainting(
+                (state.allwords + action.value)
+                  .slice(-5)
+
+                  .toLowerCase()
+              )
+            ),
             try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
@@ -97,6 +129,14 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 25) {
           return {
             ...state,
+            win: wingame(
+              wordPainting(
+                (state.allwords + action.value)
+                  .slice(-5)
+
+                  .toLowerCase()
+              )
+            ),
             try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
@@ -113,6 +153,14 @@ export default function gameLogic(state, action) {
         if (state.allwords.length + 1 === 30) {
           return {
             ...state,
+            win: wingame(
+              wordPainting(
+                (state.allwords + action.value)
+                  .slice(-5)
+
+                  .toLowerCase()
+              )
+            ),
             try: state.try + 1,
             leterwordstyle: toObject(
               state.allwords.split(""),
@@ -155,4 +203,11 @@ function toObject(keys, values) {
   });
 
   return obj;
+}
+
+function wingame(arrayofcolors) {
+  if (arrayofcolors.filter(each => each === "green").length === 5) {
+    return true;
+  }
+  return false;
 }

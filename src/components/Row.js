@@ -35,7 +35,6 @@ export default function Row(props) {
       </RowWrapper>
     );
   } else {
-    console.log("mess");
     return (
       <RowWrapper>
         <CharInRow item={props.letterstodisplay[0]} color={props.color[0]} />

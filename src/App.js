@@ -36,7 +36,7 @@ export default function App() {
     try: 0,
     win: false,
   });
-  console.log("--->", gameState.leterwordstyle);
+
   // change to preveous state instaed + letter
   function AddLetter(letter) {
     dispach({ type: "char", value: letter });
@@ -67,7 +67,16 @@ export default function App() {
 
   useEffect(() => {
     dispach({ type: "wordwasentered" });
-  }, [gameState.allwords]);
+  }, [gameState.allwords, gameState.win]);
+
+  useEffect(() => {
+    if (gameState.win) {
+      setTimeout(() => {
+        alert("you solved the woordle!!");
+        window.location.reload();
+      }, 400);
+    }
+  }, [gameState.win]);
 
   return (
     <div>
