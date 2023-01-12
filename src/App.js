@@ -25,10 +25,6 @@ const FullDisplay = styled.div`
 `;
 
 export default function App() {
-  // const [userInputs, SetUserInputs] = useState("");
-  // const [rowStyle, setRowStyle] = useState([]);
-  // const [keyboardstyle, setKeyboardStyle] = useState({});
-  // const [isfiveletters, setIsfiveletters] = useState(false);
   const [gameState, dispach] = useReducer(gameLogic, {
     allwords: "",
     g1: [],
@@ -37,8 +33,9 @@ export default function App() {
     g4: [],
     g5: [],
     g6: [],
+    leterwordstyle: {},
   });
-  console.log(gameState);
+  console.log(gameState.leterwordstyle);
   // change to preveous state instaed + letter
   function AddLetter(letter) {
     dispach({ type: "char", value: letter });
@@ -67,34 +64,11 @@ export default function App() {
     };
   }, [gameState.allwords]);
 
-  // if (gameState.allwords.length % 5 === 0 && gameState.allwords.length > 0) {
-  // }
-
-  // useEffect(() => {
-  //   if (!WordHandler(gameState.allwords.slice(-5).toLowerCase())) {
-  //     SetUserInputs(userInputs.slice(0, -5));
-  //   }
-  // }, [isfiveletters]);
-
-  // if (isvalid) {
-  //   let wordstyle = wordPainting(userInputs.slice(-5).toLowerCase());
-  //   const currentGuesse = userInputs.slice(-5).split("");
-  //   let currentobj = {};
-  //   for (let i = 0; i < 5; i++) {
-  //     currentobj[currentGuesse[i]] = wordstyle[i];
-  //   }
-
-  //   setRowStyle(prev => [...prev, ...wordstyle]);
-  // }
-
-  // if (userInputs.length % 5 === 0 && userInputs.length > 0) {
-  //   if (!WordHandler(userInputs.slice(-5).toLowerCase())) {
-  //     alert("not a valid word!");
-  //     SetUserInputs(userInputs.slice(0, -5));
-  //     setIsvalid(false);
-  //   }
-  //   setIsvalid(true);
-  // }
+  useEffect(() => {
+    if (gameState.allwords.length % 5 === 0) {
+      dispach({ type: "wordwasentered" });
+    }
+  }, [gameState.allwords]);
 
   return (
     <div>
@@ -133,7 +107,7 @@ export default function App() {
           />
         </GameInputWrapper>
         <KeyBoard
-          // color={keyboardstyle}
+          colorobj={gameState.leterwordstyle}
           QWERTY={QWERTY}
           AddLetter={AddLetter}
           RemoveLetter={RemoveLetter}

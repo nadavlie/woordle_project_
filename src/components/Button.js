@@ -20,6 +20,9 @@ const ButtonWrapper = styled.button`
     #d2d2d2 80%,
     #c0c0c0 100%
   );
+
+  background: ${props => (props.color ? props.color : "")};
+
   font-family: sans-serif;
   display: inline-block;
 
